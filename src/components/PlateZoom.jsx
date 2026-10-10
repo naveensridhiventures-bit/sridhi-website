@@ -26,7 +26,7 @@ export default function PlateZoom() {
         </div>
         <div className="zoom-stage" ref={stage}>
           <motion.div className="zoom-inner" drag="x" dragConstraints={stage} dragElastic={0.08} style={{ scale, originX: ox }}>
-            <img src="/images/hero.jpg" alt="Sridhi batter with dosa, idlis, sambar and chutneys" draggable="false" loading="lazy" />
+            <img src="/images/sridhi-hero-v5.jpg" alt="Sridhi batter with dosa, idlis, sambar and chutneys" draggable="false" loading="lazy" />
             {HOTSPOTS.map((h, i) => (
               <motion.button key={h.id} className={`dot ${active === i ? 'on' : ''}`} style={{ left: `${h.x}%`, top: `${h.y}%`, scale: inv }} onClick={() => { last.current = i; setActive(i) }} aria-label={h.title}>
                 <span className="dot-core" /><span className="dot-ring" />

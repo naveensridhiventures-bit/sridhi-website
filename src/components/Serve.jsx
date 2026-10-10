@@ -23,7 +23,7 @@ export default function Serve() {
             <p>We reply with a supply plan for your kitchen.</p>
             <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
           </div>
-          <div className="cta-photo"><img src="/images/hero.jpg" alt="Sridhi batter pack with idlis, dosa, sambar and chutneys" loading="lazy" /></div>
+          <div className="cta-photo"><img src="/images/sridhi-hero-v5.jpg" alt="Sridhi batter pack with idlis, dosa, sambar and chutneys" loading="lazy" /></div>
         </motion.div>
       </div>
     </section>

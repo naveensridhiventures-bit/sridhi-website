@@ -68,7 +68,7 @@ export default function Hero({ ready }) {
       </div>
       <div className="hero-media-wrap">
         <motion.div className="hero-media" initial={{ scale: 0.88, opacity: 0, y: 60 }} animate={ready ? { scale: 1, opacity: 1, y: 0 } : {}} transition={{ duration: 1.5, ease: [0.2, 0.7, 0.2, 1], delay: 0.5 }}>
-          <motion.img src="/images/hero.jpg" alt="Sridhi batter pack with dosa, idlis, sambar and chutneys on a wooden table" style={{ x: imgX, y: imgY }} width="1981" height="793" fetchPriority="high" />
+          <motion.img src="/images/sridhi-hero-v5.jpg" alt="Sridhi batter pack with dosa, idlis, sambar and chutneys on a wooden table" style={{ x: imgX, y: imgY }} width="1981" height="793" fetchPriority="high" />
           <span className="shine" aria-hidden="true" />
         </motion.div>
         <motion.div className="stamp" initial={{ scale: 0, rotate: -90, opacity: 0 }} animate={ready ? { scale: 1, rotate: 0, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 90, damping: 12, delay: 1.7 }} aria-hidden="true">
