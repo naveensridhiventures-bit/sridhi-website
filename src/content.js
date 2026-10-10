@@ -34,10 +34,10 @@ export const STEPS = [
 ]
 
 export const TASTE = [
-  { id: 'idli', title: 'Soft idlis', img: '/images/idli.jpg', tag: 'Steam', text: 'Fluffy idlis from naturally fermented batter. Fill the moulds, steam, serve with sambar.' },
-  { id: 'dosa', title: 'Crispy dosas', img: '/images/dosa.jpg', tag: 'Tawa', text: 'Golden and crisp. Spread thin on a hot tawa, cook until crisp, and roll.' },
-  { id: 'stone', title: 'Traditional grinding', img: '/images/grinder.jpg', tag: 'Method', text: 'The traditional grinding method, then natural fermentation to preserve nutrition.' },
-  { id: 'sides', title: 'Sambar and chutneys', img: '/images/chutney.jpg', tag: 'Pairing', text: 'Made for the classic plate, with sambar and chutneys of your choice.' },
+  { id: 'idli', title: 'Soft idlis', img: '/images/hero.jpg', pos: '22% 50%', tag: 'Steam', text: 'Fluffy idlis from naturally fermented batter. Fill the moulds, steam, serve with sambar.' },
+  { id: 'dosa', title: 'Crispy dosas', img: '/images/hero.jpg', pos: '39% 50%', tag: 'Tawa', text: 'Golden and crisp. Spread thin on a hot tawa, cook until crisp, and roll.' },
+  { id: 'stone', title: 'Traditional grinding', img: '/images/hero.jpg', pos: '65% 50%', tag: 'Method', text: 'The traditional grinding method, then natural fermentation to preserve nutrition.' },
+  { id: 'sides', title: 'Sambar and chutneys', img: '/images/hero.jpg', pos: '0% 50%', tag: 'Pairing', text: 'Made for the classic plate, with sambar and chutneys of your choice.' },
 ]
 
 export const SERVE = [
