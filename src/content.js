@@ -34,10 +34,10 @@ export const STEPS = [
 ]
 
 export const TASTE = [
-  { id: 'idli', title: 'Soft idlis', img: '/images/sridhi-hero-v5.jpg', pos: '22% 50%', tag: 'Steam', text: 'Fluffy idlis from naturally fermented batter. Fill the moulds, steam, serve with sambar.' },
-  { id: 'dosa', title: 'Crispy dosas', img: '/images/sridhi-hero-v5.jpg', pos: '39% 50%', tag: 'Tawa', text: 'Golden and crisp. Spread thin on a hot tawa, cook until crisp, and roll.' },
-  { id: 'stone', title: 'Traditional grinding', img: '/images/sridhi-hero-v5.jpg', pos: '65% 50%', tag: 'Method', text: 'The traditional grinding method, then natural fermentation to preserve nutrition.' },
-  { id: 'sides', title: 'Sambar and chutneys', img: '/images/sridhi-hero-v5.jpg', pos: '0% 50%', tag: 'Pairing', text: 'Made for the classic plate, with sambar and chutneys of your choice.' },
+  { id: 'idli', title: 'Soft idlis', img: '/images/taste/idli-v7.jpg', pos: '55% 50%', tag: 'Steam', text: 'Fluffy idlis from naturally fermented batter. Fill the moulds, steam, serve with sambar and chutney.' },
+  { id: 'dosa', title: 'Crispy dosas', img: '/images/taste/dosa-v7.jpg', pos: '62% 50%', tag: 'Tawa', text: 'Golden and crisp. Spread thin on a hot tawa, cook until crisp, and roll.' },
+  { id: 'grinders', title: 'Our stainless steel grinders', img: '/images/taste/grinder-v7.jpg', pos: '18% 50%', tag: 'Grinders', text: 'Every batch is ground in our row of stainless steel wet grinders, inside a clean, modern unit, for smooth and consistent batter.' },
+  { id: 'sambar', title: 'Sambar and chutneys', img: '/images/taste/sambar-v7.jpg', pos: '50% 50%', tag: 'Pairing', text: 'Made for the classic plate: soft idlis and crispy dosas with hot sambar and chutneys of your choice.' },
 ]
 
 export const SERVE = [
