@@ -23,7 +23,7 @@ function Orb({ kind }) {
 }
 const ORBITS = [
   { size: 78, dur: 26, items: [['idli', 0, 74], ['grain', 50, 30], ['leaf', 75, 30]] },
-  { size: 100, dur: 38, rev: true, items: [['dosa', 12, 76], ['chilli', 62, 66], ['grain', 88, 26]] },
+  { size: 100, dur: 38, rev: true, items: [['dosa', 12, 76], ['leaf', 62, 40], ['grain', 88, 26]] },
 ]
 
 function PackStage({ sx, sy, reduce, ready }) {
@@ -98,7 +98,7 @@ export default function Hero({ ready }) {
           {LINES.map((t, i) => (<span className="line" key={t} aria-hidden="true"><motion.span custom={i} variants={lineV} initial="hidden" animate={state}>{t}</motion.span></span>))}
         </h1>
         <motion.p className="hero-sub" variants={fadeUp(0.7)} initial="hidden" animate={state}>
-          Naturally fermented, made with RO purified water and no preservatives, for soft idlis and crispy dosas. We supply caterers, hotels, hospitals and institutions across Chennai.
+          Idli and dosa batter, and nothing else. Naturally fermented, made with RO purified water and no preservatives, for soft idlis and crispy dosas. We supply caterers, hotels, hospitals and institutions across Chennai.
         </motion.p>
         <motion.div className="hero-actions" variants={fadeUp(0.9)} initial="hidden" animate={state}>
           <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
@@ -109,7 +109,7 @@ export default function Hero({ ready }) {
       </div>
       <div className="hero-media-wrap">
         <motion.div className="hero-media" initial={{ scale: 0.88, opacity: 0, y: 60 }} animate={ready ? { scale: 1, opacity: 1, y: 0 } : {}} transition={{ duration: 1.5, ease: [0.2, 0.7, 0.2, 1], delay: 0.5 }}>
-          <motion.img src="/images/sridhi-hero-v5.jpg" alt="Sridhi batter pack with dosa, idlis, sambar and chutneys on a wooden table" style={{ x: imgX, y: imgY }} width="1981" height="793" fetchPriority="high" />
+          <motion.img src="/images/sridhi-hero-v5.jpg" alt="Sridhi idli and dosa batter pack with fresh idlis and a crisp dosa on a wooden table" style={{ x: imgX, y: imgY }} width="1981" height="793" fetchPriority="high" />
           <span className="shine" aria-hidden="true" />
         </motion.div>
         <motion.div className="stamp" initial={{ scale: 0, rotate: -90, opacity: 0 }} animate={ready ? { scale: 1, rotate: 0, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 90, damping: 12, delay: 1.7 }} aria-hidden="true">

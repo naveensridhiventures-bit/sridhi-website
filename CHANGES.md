@@ -1,10 +1,7 @@
-# Sridhi website v2
+# Sridhi website v3
 
-- Uses the new wide product photo everywhere (hero + zoom + taste cards). Brochure photos removed.
-- New: loading intro, scroll progress bar, cursor glow, magnetic buttons.
-- New: hero with parallax photo, floating badges, rotating stamp, falling leaves.
-- New: scroll-driven word reveal statement.
-- New: "Zoom into the plate" section, scroll zooms the photo and pops up cards per hotspot (tap/swipe on mobile).
-- New: 3D tilt feature cards, animated process scenes, expanding taste cards.
-- New: quote popup, WhatsApp popup, animated success tick.
-- Contact details are read from your existing src/data.js (CONTACT.phones[0].wa, CONTACT.email).
+- Content is now only about Sridhi idli and dosa batter. All sambar and chutney content, photos and hotspots removed.
+- Contact number set to +91 89258 64472 (call + WhatsApp) in src/data.js.
+- "Everything on this plate starts with one batter": every dot now opens an animated popup beside the dot (desktop) or a swipe-down bottom sheet (mobile) instead of text under the photo.
+- Mobile: the plate photo is wider than the screen, swipe to explore, tapping a dot slides it to the centre. Hero photo cropped to show dosa, idlis and pack on phones.
+- Email is optional: add it in src/data.js and the email button + footer line appear automatically.

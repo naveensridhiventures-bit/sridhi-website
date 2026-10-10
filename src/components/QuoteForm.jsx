@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { CONTACT, WA } from '../contact'
+import { CONTACT, HAS_EMAIL, WA } from '../contact'
 
 const VOLUMES = ['Under 50 kg a day', '50 to 200 kg a day', '200 to 1,000 kg a day', 'Over 1,000 kg a day', 'One-time event order']
 
@@ -43,7 +43,7 @@ export default function QuoteForm({ idPrefix = 'q' }) {
           <div className="field"><label htmlFor={id('note')}>Anything else? (optional)</label><textarea id={id('note')} rows="3" value={f.note} onChange={set('note')} /></div>
           <div className="form-actions">
             <button type="button" className="btn btn-green" onClick={sendWhatsApp}>Send on WhatsApp</button>
-            <button type="button" className="btn btn-ghost-dark" onClick={sendEmail}>Send by email</button>
+            {HAS_EMAIL && <button type="button" className="btn btn-ghost-dark" onClick={sendEmail}>Send by email</button>}
           </div>
         </motion.form>
       )}

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { SERVE } from '../content'
 import { useQuote } from '../quote'
 import Magnetic from './Magnetic'
+import { PHONE_TEXT, WA } from '../contact'
 
 export default function Serve() {
   const { open } = useQuote()
@@ -21,9 +22,12 @@ export default function Serve() {
           <div className="cta-copy">
             <h3>Tell us how much you cook.</h3>
             <p>We reply with a supply plan for your kitchen.</p>
-            <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
+            <div className="cta-actions">
+              <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
+              <Magnetic><a className="btn btn-ghost btn-lg" href={`tel:+${WA}`}>Call {PHONE_TEXT}</a></Magnetic>
+            </div>
           </div>
-          <div className="cta-photo"><img src="/images/sridhi-hero-v5.jpg" alt="Sridhi batter pack with idlis, dosa, sambar and chutneys" loading="lazy" /></div>
+          <div className="cta-photo"><img src="/images/sridhi-hero-v5.jpg" alt="Sridhi idli and dosa batter pack with idlis and dosa" loading="lazy" /></div>
         </motion.div>
       </div>
     </section>

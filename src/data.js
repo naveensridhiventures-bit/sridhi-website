@@ -1,1 +1,1 @@
-export const CONTACT = { phones: [{ label: '+91 XXXXX XXXXX', wa: '91XXXXXXXXXX' }], email: 'your-email@example.com' }
+export const CONTACT = { phones: [{ label: '+91 89258 64472', wa: '918925864472' }], email: '' }

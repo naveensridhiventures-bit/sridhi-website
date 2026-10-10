@@ -7,11 +7,11 @@ export const NAV = [
 export const TRUST = ['Naturally fermented', 'No preservatives', 'RO purified water', '100% natural', 'Traditional grinding', 'Fresh daily delivery']
 
 export const HOTSPOTS = [
-  { id: 'sambar', x: 16, y: 56, title: 'Sambar and chutneys', text: 'Every plate needs its partners. Sridhi batter is made for the classic South Indian plate.' },
-  { id: 'idli', x: 37, y: 74, title: 'Soft idlis', text: 'Light and fluffy, steamed straight from fresh, naturally fermented batter.' },
-  { id: 'dosa', x: 45, y: 52, title: 'Crispy dosas', text: 'Spread thin on a hot tawa, golden and crisp, from the very same batter.' },
-  { id: 'stone', x: 57, y: 38, title: 'Traditional grinding', text: 'We follow the traditional grinding method, then ferment naturally to keep the nutrition.' },
-  { id: 'pack', x: 78, y: 40, title: 'Sridhi Premium Batter', text: 'No preservatives. RO purified water. Naturally fermented. Packed fresh in Chennai.' },
+  { id: 'grain', icon: 'grain', x: 26, y: 49, tag: 'Rice + urad dal', title: 'It all starts with two grains', text: 'Rice and urad dal, soaked in RO purified water and ground into one smooth batter. Everything on this plate begins right here.' },
+  { id: 'idli', icon: 'idli', x: 37, y: 73, tag: 'Steam it', title: 'Soft, fluffy idlis', text: 'Pour the very same Sridhi batter into the moulds and steam. Light, white and fluffy, every single time.' },
+  { id: 'dosa', icon: 'dosa', x: 47, y: 52, tag: 'Tawa it', title: 'Crispy, golden dosas', text: 'Spread that same batter thin on a hot tawa. It turns golden and crisp with a lacy edge, from the same pack.' },
+  { id: 'stone', icon: 'stone', x: 57, y: 36, tag: 'Traditional grinding', title: 'Ground the traditional way', text: 'We follow the traditional grinding method, then let the batter ferment naturally to keep its taste and nutrition.' },
+  { id: 'pack', icon: 'pack', x: 78, y: 42, tag: 'Ready to use', title: 'Sridhi Premium Idli & Dosa Batter', text: 'One pack, two dishes. No preservatives, RO purified water, naturally fermented. Packed fresh in Chennai for your kitchen.', cta: true },
 ]
 
 export const FEATURES = [
@@ -37,7 +37,7 @@ export const TASTE = [
   { id: 'idli', title: 'Soft idlis', img: '/images/taste/idli-v7.jpg', pos: '55% 50%', tag: 'Steam', text: 'Fluffy idlis from naturally fermented batter. Fill the moulds, steam, serve with sambar and chutney.' },
   { id: 'dosa', title: 'Crispy dosas', img: '/images/taste/dosa-v7.jpg', pos: '62% 50%', tag: 'Tawa', text: 'Golden and crisp. Spread thin on a hot tawa, cook until crisp, and roll.' },
   { id: 'grinders', title: 'Our stainless steel grinders', img: '/images/taste/grinder-v7.jpg', pos: '18% 50%', tag: 'Grinders', text: 'Every batch is ground in our row of stainless steel wet grinders, inside a clean, modern unit, for smooth and consistent batter.' },
-  { id: 'sambar', title: 'Sambar and chutneys', img: '/images/taste/sambar-v7.jpg', pos: '50% 50%', tag: 'Pairing', text: 'Made for the classic plate: soft idlis and crispy dosas with hot sambar and chutneys of your choice.' },
+  { id: 'pack', title: 'Ready-to-use batter pack', img: '/images/sridhi-hero-v5.jpg', pos: '88% 50%', tag: 'The pack', text: 'One pack of Sridhi Premium Idli & Dosa Batter. Open, pour and cook: idlis in the steamer, dosas on the tawa.' },
 ]
 
 export const SERVE = [
