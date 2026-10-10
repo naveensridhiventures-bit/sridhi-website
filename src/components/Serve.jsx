@@ -18,9 +18,12 @@ export default function Serve() {
           ))}
         </div>
         <motion.div className="cta" initial={{ opacity: 0, scale: 0.94 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-          <h3>Tell us how much you cook.</h3>
-          <p>We reply with a supply plan for your kitchen.</p>
-          <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
+          <div className="cta-copy">
+            <h3>Tell us how much you cook.</h3>
+            <p>We reply with a supply plan for your kitchen.</p>
+            <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
+          </div>
+          <div className="cta-photo"><img src="/images/hero.jpg" alt="Sridhi batter pack with idlis, dosa, sambar and chutneys" loading="lazy" /></div>
         </motion.div>
       </div>
     </section>

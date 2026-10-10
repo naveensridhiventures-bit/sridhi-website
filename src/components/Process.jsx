@@ -34,8 +34,11 @@ export default function Process() {
           <div className="proc-stage">
             <AnimatePresence mode="wait">
               <motion.div key={s.key} className="proc-card" initial={{ opacity: 0, x: 60, rotateY: -12 }} animate={{ opacity: 1, x: 0, rotateY: 0 }} exit={{ opacity: 0, x: -60, rotateY: 12 }} transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}>
-                <Scene id={s.key} />
-                <div className="proc-cap"><span>{s.place}</span><h3>{s.title}</h3><p>{s.text}</p></div>
+                <div className="proc-media">
+                  {s.img ? <img src={s.img} alt={s.place} /> : <Scene id={s.key} />}
+                  <span className="proc-badge">{s.place}</span>
+                </div>
+                <div className="proc-cap"><span>Step 0{i + 1}</span><h3>{s.title}</h3><p>{s.text}</p></div>
               </motion.div>
             </AnimatePresence>
           </div>

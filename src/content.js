@@ -24,13 +24,13 @@ export const FEATURES = [
 ]
 
 export const STEPS = [
-  { key: 'sourcing', place: 'Stock room', title: 'Selecting the grain', text: 'Rice and urad dal are inspected and selected before they enter the unit.' },
-  { key: 'soaking', place: 'Soaking area', title: 'Soaking in purified water', text: 'Grains are soaked in RO purified water until they are ready to grind.' },
-  { key: 'grinding', place: 'Grinding area', title: 'Traditional grinding', text: 'Ground the traditional way for the smooth, airy texture good batter needs.' },
+  { key: 'sourcing', img: '/images/process/stock.jpg', place: 'Stock room', title: 'Selecting the grain', text: 'Rice and urad dal are inspected and selected before they enter the unit.' },
+  { key: 'soaking', img: '/images/process/soak.jpg', place: 'Soaking area', title: 'Soaking in purified water', text: 'Grains are soaked in RO purified water until they are ready to grind.' },
+  { key: 'grinding', img: '/images/process/grind.jpg', place: 'Grinding area', title: 'Traditional grinding', text: 'Ground the traditional way for the smooth, airy texture good batter needs.' },
   { key: 'fermenting', place: 'Fermentation', title: 'Natural fermentation', text: 'The batter rises naturally, with no preservatives or additives.' },
-  { key: 'packing', place: 'Packing area', title: 'Hygienic packing', text: 'Batter is packed into sealed packs in a clean, controlled area.' },
-  { key: 'cold', place: 'Cold room', title: 'Kept cold', text: 'Packs wait in the cold room so they stay fresh until dispatch.' },
-  { key: 'delivery', place: 'Delivery vehicles', title: 'Delivered fresh', text: 'Container vehicles carry the batter to your kitchen across Chennai.' },
+  { key: 'packing', img: '/images/process/pack.jpg', place: 'Packing area', title: 'Hygienic packing', text: 'Batter is packed into sealed packs in a clean, controlled area.' },
+  { key: 'cold', img: '/images/process/cold.jpg', place: 'Cold room', title: 'Kept cold', text: 'Packs wait in the cold room so they stay fresh until dispatch.' },
+  { key: 'delivery', img: '/images/process/delivery.jpg', place: 'Delivery vehicles', title: 'Delivered fresh', text: 'Container vehicles carry the batter to your kitchen across Chennai.' },
 ]
 
 export const TASTE = [
