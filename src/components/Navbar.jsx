@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <header className={`nav ${solid ? 'solid' : ''}`}>
       <div className="nav-in">
-        <a href="#top" aria-label="Sridhi home"><Logo size={36} /></a>
+        <a href="#top" aria-label="Sridhi home"><Logo size={40} light={!solid} /></a>
         <nav className={`nav-links ${menu ? 'open' : ''}`}>
           {NAV.map((n) => (<a key={n.href} href={n.href} onClick={() => setMenu(false)}>{n.label}</a>))}
           <button className="btn btn-green" onClick={() => { setMenu(false); open() }}>Request a quote</button>

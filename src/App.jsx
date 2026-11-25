@@ -4,6 +4,11 @@ import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import Hero, { TrustStrip } from './components/Hero'
 import Statement from './components/Statement'
+import Stats from './components/Stats'
+import About from './components/About'
+import Pack5kg from './components/Pack5kg'
+import Clients from './components/Clients'
+import OneKg from './components/OneKg'
 import PlateZoom from './components/PlateZoom'
 import Features from './components/Features'
 import Process from './components/Process'
@@ -27,11 +32,16 @@ export default function App() {
       <main>
         <Hero ready={ready} />
         <TrustStrip />
+        <Stats />
+        <About />
+        <Pack5kg />
+        <Clients />
         <Statement />
         <PlateZoom />
         <Features />
         <Process />
         <Taste />
+        <OneKg />
         <Serve />
       </main>
       <Footer />

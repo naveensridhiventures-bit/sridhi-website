@@ -4,7 +4,7 @@ import { useQuote } from '../quote'
 import Magnetic from './Magnetic'
 import { Leaf } from './Logo'
 
-const LINES = ['Batter made', 'the slow way,', 'delivered fresh.']
+const LINES = ['Pure Batter.', 'Premium Standards.', 'Zero Compromise.']
 const lineV = { hidden: { y: '115%' }, show: (i) => ({ y: 0, transition: { duration: 0.95, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 + i * 0.13 } }) }
 const fadeUp = (d) => ({ hidden: { opacity: 0, y: 26 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, delay: d } } })
 const BADGES = [
@@ -42,11 +42,14 @@ function PackStage({ sx, sy, reduce, ready }) {
       ))}
       <motion.div className="pack-3d" style={{ rotateX: reduce ? 0 : rX, rotateY: reduce ? 0 : rY }} initial={{ opacity: 0, scale: 0.4, y: 120, rotateZ: -25 }} animate={ready ? { opacity: 1, scale: 1, y: 0, rotateZ: 0 } : {}} transition={{ type: 'spring', stiffness: 70, damping: 11, delay: 0.5 }}>
         <div className="pack-float">
-          <img src="/images/pack-cutout-v6.png" alt="Sridhi Premium Idli and Dosa Batter pack" className="pack-img" width="624" height="662" fetchPriority="high" />
+          <img src="/images/pack-5kg.png" alt="Sridhi 5 kg idli and dosa batter pack, supplied to hotels and caterers" className="pack-img" width="1100" height="862" fetchPriority="high" />
           <span className="pack-sheen" aria-hidden="true" />
         </div>
       </motion.div>
       <div className="pack-shadow" aria-hidden="true" />
+      <motion.div className="kg-tag" initial={{ scale: 0, rotate: -40, opacity: 0 }} animate={ready ? { scale: 1, rotate: -8, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 140, damping: 11, delay: 2.1 }}><b>5 KG</b><span>Professional pack</span></motion.div>
+      {!reduce && <div className="steam" aria-hidden="true">{[0,1,2,3,4,5].map((i) => <i key={i} style={{ left: `${18 + i * 12}%`, animationDelay: `${i * 0.9}s` }} />)}</div>}
+      {!reduce && <div className="grains" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ left: `${6 + ((i * 17) % 88)}%`, animationDelay: `${-(i * 0.7)}s`, animationDuration: `${6 + (i % 5)}s` }} />)}</div>}
       {BADGES.map((b) => (<BadgeChip key={b.text} {...b} sx={sx} reduce={reduce} ready={ready} />))}
     </div>
   )
@@ -73,8 +76,6 @@ export default function Hero({ ready }) {
   const mx = useMotionValue(0), my = useMotionValue(0)
   const sx = useSpring(mx, { stiffness: 70, damping: 18 })
   const sy = useSpring(my, { stiffness: 70, damping: 18 })
-  const imgX = useTransform(sx, [-0.5, 0.5], [22, -22])
-  const imgY = useTransform(sy, [-0.5, 0.5], [12, -12])
   const state = ready ? 'show' : 'hidden'
   const onMove = (e) => {
     if (reduce || e.pointerType === 'touch') return
@@ -93,29 +94,19 @@ export default function Hero({ ready }) {
       )}
       <div className="hero-top">
       <div className="hero-copy">
-        <motion.p className="hero-kicker" variants={fadeUp(0)} initial="hidden" animate={state}>Idli &amp; dosa batter from Chennai, since 2016</motion.p>
+        <motion.p className="hero-kicker" variants={fadeUp(0)} initial="hidden" animate={state}>Chennai’s premium idli &amp; dosa batter · Since 2016</motion.p>
         <h1 className="hero-title" aria-label={LINES.join(' ')}>
           {LINES.map((t, i) => (<span className="line" key={t} aria-hidden="true"><motion.span custom={i} variants={lineV} initial="hidden" animate={state}>{t}</motion.span></span>))}
         </h1>
         <motion.p className="hero-sub" variants={fadeUp(0.7)} initial="hidden" animate={state}>
-          Idli and dosa batter, and nothing else. Naturally fermented, made with RO purified water and no preservatives, for soft idlis and crispy dosas. We supply caterers, hotels, hospitals and institutions across Chennai.
+          Naturally fermented. Ground the traditional way. Made with RO purified water and not a single preservative. The batter that Chennai’s finest hotels, hospitals and institutions rely on, every single day.
         </motion.p>
         <motion.div className="hero-actions" variants={fadeUp(0.9)} initial="hidden" animate={state}>
           <Magnetic><button className="btn btn-lime btn-lg" onClick={open}>Request bulk supply</button></Magnetic>
-          <Magnetic><a href="#plate" className="btn btn-ghost btn-lg">Explore the plate</a></Magnetic>
+          <Magnetic><a href="#clients" className="btn btn-ghost btn-lg">See who trusts us</a></Magnetic>
         </motion.div>
       </div>
       <PackStage sx={sx} sy={sy} reduce={reduce} ready={ready} />
-      </div>
-      <div className="hero-media-wrap">
-        <motion.div className="hero-media" initial={{ scale: 0.88, opacity: 0, y: 60 }} animate={ready ? { scale: 1, opacity: 1, y: 0 } : {}} transition={{ duration: 1.5, ease: [0.2, 0.7, 0.2, 1], delay: 0.5 }}>
-          <motion.img src="/images/sridhi-hero-v5.jpg" alt="Sridhi idli and dosa batter pack with fresh idlis and a crisp dosa on a wooden table" style={{ x: imgX, y: imgY }} width="1981" height="793" fetchPriority="high" />
-          <span className="shine" aria-hidden="true" />
-        </motion.div>
-        <motion.div className="stamp" initial={{ scale: 0, rotate: -90, opacity: 0 }} animate={ready ? { scale: 1, rotate: 0, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 90, damping: 12, delay: 1.7 }} aria-hidden="true">
-          <svg viewBox="0 0 160 160" className="stamp-ring"><defs><path id="circ" d="M80 80 m-62 0 a62 62 0 1 1 124 0 a62 62 0 1 1 -124 0" /></defs><text><textPath href="#circ" textLength="382" lengthAdjust="spacing">Naturally fermented · No preservatives · Chennai ·</textPath></text></svg>
-          <svg viewBox="0 0 40 60" className="stamp-leaf"><path d="M20 2C34 12 38 30 20 58 2 30 6 12 20 2z" fill="#3fa535" /><path d="M20 14v40" stroke="#e4ee2b" strokeWidth="3" strokeLinecap="round" /></svg>
-        </motion.div>
       </div>
     </section>
   )

@@ -1,7 +1,8 @@
 export const NAV = [
-  { href: '#why', label: 'Why Sridhi' },
+  { href: '#about', label: 'Who we are' },
+  { href: '#pack', label: '5 kg pack' },
+  { href: '#clients', label: 'Our clients' },
   { href: '#process', label: 'Our process' },
-  { href: '#taste', label: 'Taste' },
   { href: '#contact', label: 'Contact' },
 ]
 export const TRUST = ['Naturally fermented', 'No preservatives', 'RO purified water', '100% natural', 'Traditional grinding', 'Fresh daily delivery']
@@ -45,4 +46,36 @@ export const SERVE = [
   { t: 'Hotels and restaurants', d: 'Consistent batter for every service' },
   { t: 'Hospitals', d: 'Clean, preservative-free batter for patient kitchens' },
   { t: 'Institutions', d: 'Canteens, hostels, schools and offices' },
+]
+
+// Real facts taken from the Sridhi brochure
+export const STATS = [
+  { n: 10, suffix: '+', label: 'Years of craft', sub: 'Since 2016' },
+  { n: 30, suffix: '+', label: 'Renowned establishments', sub: 'Partnered in Chennai' },
+  { n: 10000, suffix: ' kg', label: 'Daily capacity', sub: 'Scalable to your need' },
+  { n: 100, suffix: '%', label: 'Natural', sub: 'No preservatives, ever' },
+]
+
+// Logo crops live in /public/images/clients (Saravana Bhavan intentionally excluded)
+export const CLIENTS = [
+  { id: 'taj-connemara', name: 'Taj Connemara' },
+  { id: 'taj-coromandel', name: 'Taj Coromandel' },
+  { id: 'taj-fishermans', name: "Taj Fisherman's Cove" },
+  { id: 'taj-clubhouse', name: 'Taj Club House' },
+  { id: 'vivanta', name: 'Vivanta by Taj' },
+  { id: 'apollo', name: 'Apollo Hospitals' },
+  { id: 'ramachandra', name: 'Sri Ramachandra Medical Center' },
+  { id: 'chettinad', name: 'Chettinad Hospital & Research Institute' },
+  { id: 'iit', name: 'IIT Madras' },
+  { id: 'krishna', name: 'Sri Krishna Sweets' },
+  { id: 'joot', name: 'JOOT Foods' },
+  { id: 'sakthi', name: "Sakthi's Kitchen" },
+  { id: 'origin', name: 'Origin Cafe' },
+]
+
+// DUMMY testimonials: replace with real client words
+export const WORDS = [
+  { q: 'Consistent texture and taste in every single delivery. Our kitchen team never has to think twice about the batter.', who: 'Executive Chef', org: 'Premium Hotel, Chennai' },
+  { q: 'On time, every time, and always fresh. Sridhi understands what a high-volume kitchen needs.', who: 'Catering Head', org: 'Institutional Caterer, Chennai' },
+  { q: 'Clean, natural and reliable. Exactly the standard we expect for our patients and guests.', who: 'Food Services Manager', org: 'Leading Hospital, Chennai' },
 ]
