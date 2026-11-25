@@ -22,7 +22,7 @@ export default function OneKg() {
         <div className="mystery" aria-label="Sridhi 1 kg pack, revealed soon">
           <div className="mystery-ring r1" aria-hidden="true" /><div className="mystery-ring r2" aria-hidden="true" />
           <motion.div className="mystery-pack" initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-            <img src="/images/pack-5kg.png" alt="" aria-hidden="true" />
+            <img src="/images/pack-cutout-v6.png" alt="" aria-hidden="true" />
             <span className="mystery-veil" aria-hidden="true" />
             <span className="mystery-label"><small>Sridhi</small><b>1 KG</b><em>? ? ?</em></span>
           </motion.div>

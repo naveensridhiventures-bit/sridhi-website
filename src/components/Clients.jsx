@@ -3,17 +3,12 @@ import { AnimatePresence, motion, useMotionValue, useSpring, useTransform, useRe
 import { CLIENTS, WORDS } from '../content'
 
 const byId = Object.fromEntries(CLIENTS.map((c) => [c.id, c]))
-const FLOATERS = [
-  { id: 'taj-connemara', cls: 'f1', d: 0 }, { id: 'apollo', cls: 'f2', d: 0.8 },
-  { id: 'iit', cls: 'f3', d: 1.6 }, { id: 'vivanta', cls: 'f4', d: 0.4 },
-  { id: 'krishna', cls: 'f5', d: 1.2 }, { id: 'joot', cls: 'f6', d: 2 },
-]
 
 function LogoCard({ id, cls = '', d = 0, float = false }) {
   const c = byId[id]
   return (
     <div className={`lcard ${cls}`} style={float ? { animationDelay: `${d}s` } : undefined} title={c.name}>
-      <img src={`/images/clients/${id}.jpg`} alt={c.name} loading="lazy" draggable="false" />
+      <img src={`/images/clients/${id}.png`} alt={c.name} loading="lazy" draggable="false" />
     </div>
   )
 }
@@ -56,9 +51,12 @@ export default function Clients() {
             <img src="/images/clientele-featured.jpg" alt="Sridhi premium clientele: Apollo Hospitals, Sri Ramachandra, Chettinad Hospital, Taj hotels, Vivanta, JOOT Foods, Sakthi's Kitchen and Origin Cafe" loading="lazy" />
             <span className="shine" aria-hidden="true" />
           </motion.div>
-          {FLOATERS.map((f) => (
-            <motion.div key={f.id} className={`float-wrap ${f.cls}`} initial={{ opacity: 0, scale: 0.4 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 120, damping: 12, delay: 0.5 + f.d * 0.25 }}>
-              <LogoCard id={f.id} float d={f.d} cls="floaty" />
+        </div>
+
+        <div className="cgrid" aria-label="Our clients">
+          {CLIENTS.map((c, k) => (
+            <motion.div key={c.id} className="cgrid-item" initial={{ opacity: 0, y: 40, scale: 0.9 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, margin: '-40px' }} transition={{ type: 'spring', stiffness: 110, damping: 14, delay: (k % 4) * 0.08 + Math.floor(k / 4) * 0.12 }}>
+              <LogoCard id={c.id} />
             </motion.div>
           ))}
         </div>

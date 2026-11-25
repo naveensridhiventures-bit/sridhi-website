@@ -66,8 +66,6 @@ export const CLIENTS = [
   { id: 'apollo', name: 'Apollo Hospitals' },
   { id: 'ramachandra', name: 'Sri Ramachandra Medical Center' },
   { id: 'chettinad', name: 'Chettinad Hospital & Research Institute' },
-  { id: 'iit', name: 'IIT Madras' },
-  { id: 'krishna', name: 'Sri Krishna Sweets' },
   { id: 'joot', name: 'JOOT Foods' },
   { id: 'sakthi', name: "Sakthi's Kitchen" },
   { id: 'origin', name: 'Origin Cafe' },

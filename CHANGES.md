@@ -1,7 +1,6 @@
-# Sridhi website v8
+# Sridhi website v9
 
-- New hero headline: "Pure Batter. Premium Standards. Zero Compromise." with the plain 5 kg pack, steam and grain particles.
-- Real Sridhi logo (from brochure) in navbar, preloader and footer.
-- New sections: animated counters, Who we are (DUMMY text in src/components/About.jsx), 5 kg professional pack, Brands That Trust Sridhi (featured clientele image, floating logo cards, moving logo rows, DUMMY testimonials in src/content.js), "Sridhi 1 kg - Coming soon" teaser with WhatsApp notify.
-- Saravana Bhavan is intentionally excluded from all client displays.
-- Phone number: change in ONE place, src/data.js (CONTACT.phones).
+- Clients: crisp logos cut from the supplied brand image, uniform cards (no more cropping), featured clientele image in a premium frame with tilt + shine, staggered spring reveal grid, two smooth marquee rows.
+- Only the 11 supplied brands are shown. IIT Madras and Sri Krishna Sweets removed. Saravana Bhavan remains excluded.
+- Hero now shows the 1 kg pack in a floating 3D turntable with "Launching soon" pill, "1 KG Coming soon" seal and a glowing "Be the first to know" WhatsApp button.
+- 5 kg professional pack section kept further down the page.

@@ -3,6 +3,9 @@ import { TRUST } from '../content'
 import { useQuote } from '../quote'
 import Magnetic from './Magnetic'
 import { Leaf } from './Logo'
+import { WA } from '../contact'
+
+const NOTIFY = `https://wa.me/${WA}?text=${encodeURIComponent('Hello Sridhi, please notify me when Sridhi 1 kg launches.')}`
 
 const LINES = ['Pure Batter.', 'Premium Standards.', 'Zero Compromise.']
 const lineV = { hidden: { y: '115%' }, show: (i) => ({ y: 0, transition: { duration: 0.95, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 + i * 0.13 } }) }
@@ -41,13 +44,17 @@ function PackStage({ sx, sy, reduce, ready }) {
         </div>
       ))}
       <motion.div className="pack-3d" style={{ rotateX: reduce ? 0 : rX, rotateY: reduce ? 0 : rY }} initial={{ opacity: 0, scale: 0.4, y: 120, rotateZ: -25 }} animate={ready ? { opacity: 1, scale: 1, y: 0, rotateZ: 0 } : {}} transition={{ type: 'spring', stiffness: 70, damping: 11, delay: 0.5 }}>
-        <div className="pack-float">
-          <img src="/images/pack-5kg.png" alt="Sridhi 5 kg idli and dosa batter pack, supplied to hotels and caterers" className="pack-img" width="1100" height="862" fetchPriority="high" />
-          <span className="pack-sheen" aria-hidden="true" />
+        <div className="pack-turn">
+          <div className="pack-float">
+            <img src="/images/pack-cutout-v6.png" alt="Sridhi 1 kg idli and dosa batter pack, coming soon" className="pack-img" width="624" height="662" fetchPriority="high" />
+            <span className="pack-sheen" aria-hidden="true" />
+          </div>
         </div>
       </motion.div>
       <div className="pack-shadow" aria-hidden="true" />
-      <motion.div className="kg-tag" initial={{ scale: 0, rotate: -40, opacity: 0 }} animate={ready ? { scale: 1, rotate: -8, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 140, damping: 11, delay: 2.1 }}><b>5 KG</b><span>Professional pack</span></motion.div>
+      <motion.div className="kg-tag" initial={{ scale: 0, rotate: -40, opacity: 0 }} animate={ready ? { scale: 1, rotate: -8, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 140, damping: 11, delay: 2.1 }}><b>1 KG</b><span>Coming soon</span></motion.div>
+      <motion.div className="soon-pill" initial={{ opacity: 0, y: -20 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 1.3, duration: 0.7 }}><i aria-hidden="true" />Launching soon</motion.div>
+      <motion.a className="soon-btn" href={NOTIFY} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 30 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 2.3, duration: 0.7 }} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.97 }}>Be the first to know<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-5l5 5-5 5" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg></motion.a>
       {!reduce && <div className="steam" aria-hidden="true">{[0,1,2,3,4,5].map((i) => <i key={i} style={{ left: `${18 + i * 12}%`, animationDelay: `${i * 0.9}s` }} />)}</div>}
       {!reduce && <div className="grains" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ left: `${6 + ((i * 17) % 88)}%`, animationDelay: `${-(i * 0.7)}s`, animationDuration: `${6 + (i % 5)}s` }} />)}</div>}
       {BADGES.map((b) => (<BadgeChip key={b.text} {...b} sx={sx} reduce={reduce} ready={ready} />))}
