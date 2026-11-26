@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion, useInView, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { FEATURES } from '../content'
 
 const ICONS = {
@@ -11,34 +10,38 @@ const ICONS = {
   truck: <><path d="M3 10h22v18H3zM25 16h8l5 6v6H25z" /><circle cx="11" cy="30" r="3" /><circle cx="31" cy="30" r="3" /></>,
 }
 
-/** Six pillars: the active one opens wide. Opens in turn until the visitor takes over. */
-export default function Features() {
-  const [on, setOn] = useState(0)
-  const [auto, setAuto] = useState(true)
-  const box = useRef(null)
-  const seen = useInView(box, { margin: '-25% 0px' })
-  const reduce = useReducedMotion()
-  useEffect(() => {
-    if (!auto || !seen || reduce) return
-    const t = setInterval(() => setOn((v) => (v + 1) % FEATURES.length), 3600)
-    return () => clearInterval(t)
-  }, [auto, seen, reduce])
-  const pick = (i) => { setOn(i); setAuto(false) }
+function Quality({ f, i, side }) {
+  const dir = side === 'l' ? -1 : 1
+  const delay = 0.35 + (i % 3) * 0.22
   return (
-    <section id="why" className="section why">
+    <motion.li className={`q ${side} q${i % 3}`} initial={{ opacity: 0, x: dir * 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ delay, duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}>
+      <span className="q-medal">
+        <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ICONS[f.icon]}</svg>
+      </span>
+      <div className="q-text"><h3>{f.title}</h3><p>{f.text}</p></div>
+      <motion.i className="q-wire" aria-hidden="true" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ delay: delay + 0.5, duration: 0.8 }} />
+    </motion.li>
+  )
+}
+
+/** Premium showcase: the pack in the centre, six qualities around it. */
+export default function Features() {
+  return (
+    <section id="why" className="section show">
       <div className="wrap">
-        <p className="eyebrow">Why Sridhi</p>
-        <h2 className="h2">Simple ingredients, done properly</h2>
-        <div className="pillars" ref={box}>
-          {FEATURES.map((f, i) => (
-            <motion.button type="button" key={f.title} className={`pillar ${i === on ? 'on' : ''}`} aria-expanded={i === on}
-              onClick={() => pick(i)} onPointerEnter={(e) => e.pointerType === 'mouse' && pick(i)} onFocus={() => pick(i)}
-              initial={{ opacity: 0, y: 70 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ delay: i * 0.08, duration: 0.7 }}>
-              <span className="pl-num" aria-hidden="true">0{i + 1}</span>
-              <svg viewBox="0 0 42 42" className="pl-icon" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ICONS[f.icon]}</svg>
-              <span className="pl-body"><b>{f.title}</b><span>{f.text}</span></span>
-            </motion.button>
-          ))}
+        <motion.div className="show-head" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+          <p className="eyebrow light">Why Sridhi</p>
+          <h2 className="h2 light">Simple ingredients, <em>done properly</em></h2>
+        </motion.div>
+        <div className="show-grid">
+          <ul className="show-col">{FEATURES.slice(0, 3).map((f, i) => <Quality key={f.title} f={f} i={i} side="l" />)}</ul>
+          <motion.div className="show-centre" initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: [0.2, 0.8, 0.2, 1] }}>
+            <span className="show-halo" aria-hidden="true" />
+            <span className="show-ring a" aria-hidden="true" /><span className="show-ring b" aria-hidden="true" />
+            <img src="/images/pack-5kg.png" alt="Sridhi 5 kg batter pack" loading="lazy" width="1100" height="862" />
+            <span className="show-plinth" aria-hidden="true" />
+          </motion.div>
+          <ul className="show-col">{FEATURES.slice(3).map((f, i) => <Quality key={f.title} f={f} i={i + 3} side="r" />)}</ul>
         </div>
       </div>
     </section>
