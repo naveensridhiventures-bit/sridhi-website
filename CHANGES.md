@@ -1,5 +1,5 @@
-# Sridhi website v12
+# Sridhi website v13
 
-- "Why Sridhi": the six tall cards are replaced by a dark showcase with the 5 kg pack in the centre and all six qualities visible around it.
+- Process step 04 "Hygienic packing": new packing area photo.
 - Phone number unchanged (+91 89258 64472). To change it, edit src/data.js.
 - Who we are text is still DUMMY content.

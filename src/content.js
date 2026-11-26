@@ -28,7 +28,7 @@ export const STEPS = [
   { key: 'sourcing', img: '/images/process/stock-v5.jpg', place: 'Stock room', title: 'Selecting the grain', text: 'Rice and urad dal are inspected and selected before they enter the unit.' },
   { key: 'soaking', img: '/images/process/soak-v5.jpg', place: 'Soaking area', title: 'Soaking in purified water', text: 'Grains are soaked in RO purified water until they are ready to grind.' },
   { key: 'grinding', img: '/images/process/grind-v5.jpg', place: 'Grinding area', title: 'Traditional grinding', text: 'Ground the traditional way for the smooth, airy texture good batter needs.' },
-  { key: 'packing', img: '/images/process/pack-v5.jpg', place: 'Packing area', title: 'Hygienic packing', text: 'Batter is packed into sealed packs in a clean, controlled area.' },
+  { key: 'packing', img: '/images/process/packing-v13.jpg', place: 'Packing area', title: 'Hygienic packing', text: 'Batter is packed into sealed packs in a clean, controlled area.' },
   { key: 'cold', img: '/images/process/cold-v5.jpg', place: 'Cold room', title: 'Kept cold', text: 'Packs wait in the cold room so they stay fresh until dispatch.' },
   { key: 'delivery', img: '/images/process/delivery-v5.jpg', place: 'Delivery vehicles', title: 'Delivered fresh', text: 'Container vehicles carry the batter to your kitchen across Chennai.' },
 ]
