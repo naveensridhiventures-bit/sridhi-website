@@ -14,7 +14,6 @@ export default function Pack5kg() {
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [70, -70])
-  const rot = useTransform(scrollYProgress, [0, 0.5, 1], [-6, 0, 6])
   const { open } = useQuote()
   const mx = useMotionValue(0), my = useMotionValue(0)
   const tiltY = useSpring(useTransform(mx, [-0.5, 0.5], [-18, 18]), { stiffness: 70, damping: 14 })
@@ -30,14 +29,14 @@ export default function Pack5kg() {
         <div className="pack5-stage" onPointerMove={onMove} onPointerLeave={() => { mx.set(0); my.set(0) }}>
           <div className="pack5-glow" aria-hidden="true" />
           <div className="pack5-orbit" aria-hidden="true" />
-          <motion.div className="pack5-move" style={reduce ? undefined : { y, rotate: rot }}>
-            <motion.div className="pack5-tilt" style={reduce ? undefined : { rotateX: tiltX, rotateY: tiltY }} initial={{ opacity: 0, scale: 0.6, y: 80 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 70, damping: 12 }}>
-              <img src="/images/pack-5kg.png" alt="Sridhi 5 kg idli and dosa batter pack" className="pack5-img" loading="lazy" width="1100" height="862" />
+          <motion.div className="pack5-move" style={reduce ? undefined : { y }}>
+            <motion.div className="pack5-tilt" style={reduce ? undefined : { rotateX: tiltX, rotateY: tiltY }} initial={{ opacity: 0, scale: 0.85, y: 80 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 70, damping: 12 }}>
+              <img src="/images/pack-5kg-v14.jpg" alt="Sridhi 5 kg idli and dosa batter pack with rice, batter and fresh idlis" className="pack5-img" loading="lazy" width="1536" height="1024" />
               <span className="pack5-sheen" aria-hidden="true" />
             </motion.div>
+            <motion.span className="pack5-seal" initial={{ scale: 0, rotate: -50 }} whileInView={{ scale: 1, rotate: -10 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 140, damping: 11, delay: 0.4 }}><b>5</b>KG</motion.span>
           </motion.div>
           <div className="pack5-shadow" aria-hidden="true" />
-          <motion.span className="pack5-seal" initial={{ scale: 0, rotate: -50 }} whileInView={{ scale: 1, rotate: -10 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 140, damping: 11, delay: 0.4 }}><b>5</b>KG</motion.span>
         </div>
         <div>
           <p className="eyebrow light">The pack our kitchens trust</p>

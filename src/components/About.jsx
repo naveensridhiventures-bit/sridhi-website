@@ -9,7 +9,7 @@ export default function About() {
     <section id="about" className="section about">
       <div className="wrap about-grid">
         <motion.div className="about-media" initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 1.1, ease: [0.2, 0.7, 0.2, 1] }}>
-          <img src="/images/who-we-are-5kg.jpg" alt="Sridhi 5 kg batter pack beside fresh idlis and a golden dosa" loading="lazy" />
+          <img src="/images/who-we-are-v14.jpg" alt="Sridhi batter pack beside fresh idlis, sambar and chutney" loading="lazy" />
           <span className="about-shine" aria-hidden="true" />
           <span className="about-badge"><b>Since</b>2016</span>
         </motion.div>

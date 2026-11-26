@@ -38,7 +38,7 @@ export default function Features() {
           <motion.div className="show-centre" initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: [0.2, 0.8, 0.2, 1] }}>
             <span className="show-halo" aria-hidden="true" />
             <span className="show-ring a" aria-hidden="true" /><span className="show-ring b" aria-hidden="true" />
-            <img src="/images/pack-5kg.png" alt="Sridhi 5 kg batter pack" loading="lazy" width="1100" height="862" />
+            <img src="/images/pack-5kg-v14.png" alt="Sridhi 5 kg batter pack" loading="lazy" width="787" height="901" />
             <span className="show-plinth" aria-hidden="true" />
           </motion.div>
           <ul className="show-col">{FEATURES.slice(3).map((f, i) => <Quality key={f.title} f={f} i={i + 3} side="r" />)}</ul>

@@ -551,3 +551,17 @@ small{color:#c0392b;font-size:.82rem}
 .fab-x{position:absolute;z-index:3;top:12px;right:16px;font-size:1.5rem;line-height:1;color:rgba(255,255,255,.75)}
 .since-year{flex:none;-webkit-mask-image:linear-gradient(transparent,#000 16%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 16%,#000 82%,transparent)}
 @media(max-width:560px){.fab-pop{width:min(270px,80vw)}.fab-head{display:none}.fab-in{padding:14px;gap:10px}.fab-chat{margin-right:26px}.fab-x{top:10px;right:11px}}
+
+/* v14: new pack photography */
+.pack5-move{width:100%}
+.pack5-tilt{border-radius:28px;overflow:hidden;border:1px solid rgba(233,207,122,.55);box-shadow:0 40px 70px rgba(0,0,0,.5),0 0 60px rgba(228,238,43,.14)}
+.pack5-img{width:100%;height:auto;animation:none;filter:none}
+.pack5-sheen{-webkit-mask-image:none;mask-image:none;animation:sheen 5s ease-in-out infinite;background-image:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%)}
+.pack5-shadow{display:none}
+.pack5-orbit{width:min(112%,640px)}
+.pack5-seal{right:-18px;top:-34px}
+@media(max-width:960px){.pack5-seal{right:-4px;top:-22px}}
+.about-badge{right:auto;left:18px}
+.show-centre{aspect-ratio:787/937}
+.show-centre img{width:87%}
+@media(max-width:960px){.show-centre{width:min(340px,76vw);aspect-ratio:787/901}}
