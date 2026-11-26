@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { WA } from '../contact'
+import Logo from './Logo'
 const url = `https://wa.me/${WA}?text=${encodeURIComponent('Hello Sridhi, I would like to know more about your idli & dosa batter supply.')}`
 export default function WhatsAppFab() {
   const [open, setOpen] = useState(false)
@@ -10,10 +11,16 @@ export default function WhatsAppFab() {
     <div className="fab-wrap">
       <AnimatePresence>
         {open && (
-          <motion.div className="fab-pop" initial={{ opacity: 0, y: 30, scale: 0.8, transformOrigin: '90% 100%' }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.85 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
+          <motion.div className="fab-pop" initial={{ opacity: 0, y: 40, scale: 0.4, rotate: 6, transformOrigin: '90% 100%' }} animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }} exit={{ opacity: 0, y: 20, scale: 0.6 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }}>
             <button className="fab-x" aria-label="Dismiss" onClick={() => { setOpen(false); setDismissed(true) }}>&times;</button>
-            <p><strong>Need batter for your kitchen?</strong>Tell us your daily requirement and we will plan the supply.</p>
-            <a className="btn btn-green" href={url} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            <div className="fab-in">
+              <div className="fab-head"><Logo light size={30} /></div>
+              <div className="fab-chat">
+                <motion.span className="fab-typing" aria-hidden="true" initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ delay: 1.3, duration: 0.2 }}><i /><i /><i /></motion.span>
+                <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4 }}><strong>Need batter for your kitchen?</strong>Tell us your daily requirement and we will plan the supply.</motion.p>
+              </div>
+              <a className="btn btn-lime" href={url} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

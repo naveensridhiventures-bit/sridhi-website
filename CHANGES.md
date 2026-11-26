@@ -1,8 +1,8 @@
-# Sridhi website v10
+# Sridhi website v11
 
-- Hero: same headline, new line "One Craft. Idli Batter. Mastered.", cinematic 1 kg reveal (shadow to light, spotlight beams, "Coming Soon").
-- Clients moved directly under the hero: "Our Valued Clients, Trusted By", 3D rotating ring of 13 logos (IIT Madras and Sri Krishna Sweets added, Saravana Bhavan excluded).
-- Sample testimonials replaced by the promise "Your reputation is safe with us."
-- 5 kg pack: 3D tilt, float and shine.
-- Who we are: new pack photo. Text is still DUMMY content.
+- "Since 2016": giant year rolls up to today as you scroll, then Ground. Packed. Delivered.
+- Process: step 04 "Natural fermentation" removed; six steps in a scroll-driven sideways journey (stacked on phones).
+- Why Sridhi: six expanding pillars.
+- WhatsApp popup: new design, same words.
 - Phone number unchanged (+91 89258 64472). To change it, edit src/data.js.
+- Who we are text is still DUMMY content.

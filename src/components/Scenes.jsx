@@ -1,6 +1,5 @@
 const grains = Array.from({ length: 14 }, (_, i) => ({ x: 150 + ((i * 29) % 100), d: ((i * 0.31) % 3).toFixed(2) }))
 const bubbles = Array.from({ length: 8 }, (_, i) => ({ x: 14 + ((i * 37) % 110), d: ((i * 0.5) % 3).toFixed(1), r: 3 + (i % 3) * 2 }))
-const fb = Array.from({ length: 9 }, (_, i) => ({ x: 130 + ((i * 41) % 140), d: ((i * 0.43) % 3).toFixed(2), r: 4 + (i % 3) * 3 }))
 
 const S = ({ label, children }) => (<svg viewBox="0 0 400 350" className="scene" role="img" aria-label={label}>{children}</svg>)
 
@@ -32,18 +31,6 @@ function Grinding() {
     <rect x="190" y="150" width="20" height="76" rx="8" fill="#8f9b95" /><rect x="168" y="140" width="64" height="16" rx="8" fill="#b8c4bd" />
   </S>)
 }
-function Fermenting() {
-  return (<S label="Batter rising and bubbling in a bowl">
-    <clipPath id="bowlclip"><path d="M90 130h220c0 90-40 160-110 160S90 220 90 130z" /></clipPath>
-    <path d="M90 130h220c0 90-40 160-110 160S90 220 90 130z" fill="rgba(255,255,255,.08)" stroke="#e8efe9" strokeWidth="6" />
-    <g clipPath="url(#bowlclip)">
-      <g className="batter-rise"><rect x="80" y="30" width="240" height="280" fill="#fffbe3" /><ellipse cx="200" cy="30" rx="120" ry="14" fill="#fff" /></g>
-      {fb.map((b, i) => (<circle key={i} className="sbub" cx={b.x} cy="270" r={b.r} fill="none" stroke="#e4d9a2" strokeWidth="2.5" style={{ animationDelay: `${b.d}s` }} />))}
-    </g>
-    <ellipse cx="200" cy="130" rx="110" ry="12" fill="none" stroke="#e8efe9" strokeWidth="6" />
-    <rect x="130" y="290" width="140" height="12" rx="6" fill="#5b6660" />
-  </S>)
-}
 function Packing() {
   return (<S label="Packs moving along a conveyor">
     <rect x="150" y="30" width="100" height="30" rx="8" fill="#b8c4bd" /><rect className="press" x="165" y="64" width="70" height="26" rx="6" fill="#e4ee2b" />
@@ -68,7 +55,7 @@ function Delivery() {
       {[116, 262].map((x) => (<g key={x}><circle cx={x} cy="272" r="17" fill="#10231a" /><circle className="wheel" cx={x} cy="272" r="8" fill="#b8c4bd" /></g>))}</g>
   </S>)
 }
-const MAP = { sourcing: Sourcing, soaking: Soaking, grinding: Grinding, fermenting: Fermenting, packing: Packing, cold: Cold, delivery: Delivery }
+const MAP = { sourcing: Sourcing, soaking: Soaking, grinding: Grinding, packing: Packing, cold: Cold, delivery: Delivery }
 export default function Scene({ id }) {
   const C = MAP[id] || Delivery
   return <div className={`scene-wrap ${id}`}><C /></div>

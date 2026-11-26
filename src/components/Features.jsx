@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { FEATURES } from '../content'
 
 const ICONS = {
@@ -11,38 +11,35 @@ const ICONS = {
   truck: <><path d="M3 10h22v18H3zM25 16h8l5 6v6H25z" /><circle cx="11" cy="30" r="3" /><circle cx="31" cy="30" r="3" /></>,
 }
 
-function Tilt({ f, i }) {
-  const ref = useRef(null)
-  const rx = useMotionValue(0), ry = useMotionValue(0)
-  const srx = useSpring(rx, { stiffness: 200, damping: 18 }), sry = useSpring(ry, { stiffness: 200, damping: 18 })
-  const gx = useMotionValue(50), gy = useMotionValue(50)
-  const bg = useTransform([gx, gy], ([x, y]) => `radial-gradient(260px circle at ${x}% ${y}%, rgba(228,238,43,.35), transparent 60%)`)
-  const move = (e) => {
-    if (e.pointerType === 'touch') return
-    const r = ref.current.getBoundingClientRect()
-    const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height
-    ry.set((px - 0.5) * 14); rx.set((0.5 - py) * 14); gx.set(px * 100); gy.set(py * 100)
-  }
-  const leave = () => { rx.set(0); ry.set(0) }
-  return (
-    <motion.div className="tilt-wrap" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.7, delay: (i % 3) * 0.1 }}>
-      <motion.article ref={ref} className="fcard" style={{ rotateX: srx, rotateY: sry }} onPointerMove={move} onPointerLeave={leave}>
-        <motion.span className="glare" style={{ background: bg }} />
-        <svg viewBox="0 0 42 42" className="ficon" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ICONS[f.icon]}</svg>
-        <h3>{f.title}</h3>
-        <p>{f.text}</p>
-      </motion.article>
-    </motion.div>
-  )
-}
-
+/** Six pillars: the active one opens wide. Opens in turn until the visitor takes over. */
 export default function Features() {
+  const [on, setOn] = useState(0)
+  const [auto, setAuto] = useState(true)
+  const box = useRef(null)
+  const seen = useInView(box, { margin: '-25% 0px' })
+  const reduce = useReducedMotion()
+  useEffect(() => {
+    if (!auto || !seen || reduce) return
+    const t = setInterval(() => setOn((v) => (v + 1) % FEATURES.length), 3600)
+    return () => clearInterval(t)
+  }, [auto, seen, reduce])
+  const pick = (i) => { setOn(i); setAuto(false) }
   return (
-    <section id="why" className="section">
+    <section id="why" className="section why">
       <div className="wrap">
         <p className="eyebrow">Why Sridhi</p>
         <h2 className="h2">Simple ingredients, done properly</h2>
-        <div className="fgrid">{FEATURES.map((f, i) => (<Tilt key={f.title} f={f} i={i} />))}</div>
+        <div className="pillars" ref={box}>
+          {FEATURES.map((f, i) => (
+            <motion.button type="button" key={f.title} className={`pillar ${i === on ? 'on' : ''}`} aria-expanded={i === on}
+              onClick={() => pick(i)} onPointerEnter={(e) => e.pointerType === 'mouse' && pick(i)} onFocus={() => pick(i)}
+              initial={{ opacity: 0, y: 70 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ delay: i * 0.08, duration: 0.7 }}>
+              <span className="pl-num" aria-hidden="true">0{i + 1}</span>
+              <svg viewBox="0 0 42 42" className="pl-icon" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ICONS[f.icon]}</svg>
+              <span className="pl-body"><b>{f.title}</b><span>{f.text}</span></span>
+            </motion.button>
+          ))}
+        </div>
       </div>
     </section>
   )
