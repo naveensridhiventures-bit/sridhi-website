@@ -1,83 +1,100 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
-import { CLIENTS, WORDS } from '../content'
+import { useEffect, useRef, useState } from 'react'
+import { animate, motion, useAnimationFrame, useInView, useReducedMotion } from 'framer-motion'
+import { CLIENTS } from '../content'
 
-const byId = Object.fromEntries(CLIENTS.map((c) => [c.id, c]))
+const STEP = 360 / CLIENTS.length
+const PROMISE = 'Your reputation is safe with us.'
 
-function LogoCard({ id, cls = '', d = 0, float = false }) {
-  const c = byId[id]
+function LogoCard({ c }) {
   return (
-    <div className={`lcard ${cls}`} style={float ? { animationDelay: `${d}s` } : undefined} title={c.name}>
-      <img src={`/images/clients/${id}.png`} alt={c.name} loading="lazy" draggable="false" />
+    <div className="lcard">
+      <img src={`/images/clients/${c.id}.png`} alt={c.name} draggable="false" />
     </div>
   )
 }
 
-function Marquee({ items, rev }) {
-  const list = [...items, ...items]
+/** 3D rotating ring of client logos. Turns on its own; drag or swipe to spin. */
+function Ring() {
+  const box = useRef(null), ring = useRef(null), cards = useRef([])
+  const angle = useRef(0), speed = useRef(0), drag = useRef(null)
+  const inView = useInView(box)
+  const [radius, setRadius] = useState(500)
+
+  useEffect(() => {
+    const fit = () => {
+      const w = cards.current[0]?.offsetWidth || 210
+      setRadius(Math.round((w * 1.1) / (2 * Math.tan(Math.PI / CLIENTS.length))))
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    return () => window.removeEventListener('resize', fit)
+  }, [])
+
+  useAnimationFrame((_, delta) => {
+    if (!inView || !ring.current) return
+    const dt = Math.min(delta, 50) / 1000
+    if (!drag.current) {
+      speed.current *= Math.pow(0.12, dt)
+      angle.current -= (11 + speed.current) * dt
+    }
+    ring.current.style.transform = `translateZ(${-radius}px) rotateY(${angle.current}deg)`
+    cards.current.forEach((el, i) => {
+      if (!el) return
+      const front = Math.cos(((i * STEP + angle.current) * Math.PI) / 180) // 1 = facing viewer
+      el.style.opacity = front > 0 ? 0.35 + 0.65 * front : 0.12
+      el.classList.toggle('front', front > Math.cos((STEP / 2) * Math.PI / 180))
+    })
+  })
+
+  const down = (e) => { drag.current = { x: e.clientX }; speed.current = 0; e.currentTarget.setPointerCapture(e.pointerId) }
+  const move = (e) => {
+    if (!drag.current) return
+    const dx = e.clientX - drag.current.x
+    drag.current.x = e.clientX
+    angle.current += dx * 0.25
+    speed.current = -dx * 6
+  }
+  const up = () => { drag.current = null }
+
   return (
-    <div className="mq" aria-hidden="true">
-      <div className={`mq-track ${rev ? 'rev' : ''}`}>
-        {list.map((c, i) => <LogoCard key={c.id + i} id={c.id} />)}
+    <motion.div ref={box} className="ring-box" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
+      initial={{ opacity: 0, scale: 0.7, y: 60 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 1.2, ease: [0.2, 0.7, 0.2, 1] }}>
+      <div className="ring-halo" aria-hidden="true" />
+      <div className="ring-floor" aria-hidden="true" />
+      <div ref={ring} className="ring">
+        {CLIENTS.map((c, i) => (
+          <div key={c.id} className="ring-slot" style={{ transform: `rotateY(${i * STEP}deg) translateZ(${radius}px)` }}>
+            <div ref={(el) => (cards.current[i] = el)} className="ring-card"><LogoCard c={c} /></div>
+          </div>
+        ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 export default function Clients() {
   const reduce = useReducedMotion()
-  const mx = useMotionValue(0), my = useMotionValue(0)
-  const sx = useSpring(mx, { stiffness: 60, damping: 16 }), sy = useSpring(my, { stiffness: 60, damping: 16 })
-  const rY = useTransform(sx, [-0.5, 0.5], [-7, 7]), rX = useTransform(sy, [-0.5, 0.5], [5, -5])
-  const [i, setI] = useState(0)
-  useEffect(() => { if (reduce) return; const t = setInterval(() => setI((v) => (v + 1) % WORDS.length), 5500); return () => clearInterval(t) }, [reduce])
-  const onMove = (e) => {
-    if (reduce || e.pointerType === 'touch') return
-    const r = e.currentTarget.getBoundingClientRect()
-    mx.set((e.clientX - r.left) / r.width - 0.5); my.set((e.clientY - r.top) / r.height - 0.5)
-  }
-  const half = Math.ceil(CLIENTS.length / 2)
   return (
     <section id="clients" className="section dark clients">
       <div className="wrap">
         <div className="clients-head">
-          <motion.p className="eyebrow light" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Our valued clients</motion.p>
-          <motion.h2 className="h2 light" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}>Brands That Trust Sridhi</motion.h2>
+          <motion.h2 className="h2 light" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>Our Valued Clients, <span className="gold">Trusted By</span></motion.h2>
           <motion.p className="clients-sub" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.25 }}>From heritage hotels to leading hospitals and institutions, Chennai&rsquo;s most respected names put Sridhi on their kitchen table.</motion.p>
         </div>
+      </div>
 
-        <div className="featured" onPointerMove={onMove} onPointerLeave={() => { mx.set(0); my.set(0) }}>
-          <motion.div className="featured-frame" style={reduce ? undefined : { rotateY: rY, rotateX: rX }} initial={{ opacity: 0, scale: 0.88, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 1, ease: [0.2, 0.7, 0.2, 1] }}>
-            <img src="/images/clientele-featured.jpg" alt="Sridhi premium clientele: Apollo Hospitals, Sri Ramachandra, Chettinad Hospital, Taj hotels, Vivanta, JOOT Foods, Sakthi's Kitchen and Origin Cafe" loading="lazy" />
-            <span className="shine" aria-hidden="true" />
-          </motion.div>
-        </div>
+      {reduce
+        ? <div className="wrap cgrid">{CLIENTS.map((c) => <LogoCard key={c.id} c={c} />)}</div>
+        : <Ring />}
 
-        <div className="cgrid" aria-label="Our clients">
-          {CLIENTS.map((c, k) => (
-            <motion.div key={c.id} className="cgrid-item" initial={{ opacity: 0, y: 40, scale: 0.9 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, margin: '-40px' }} transition={{ type: 'spring', stiffness: 110, damping: 14, delay: (k % 4) * 0.08 + Math.floor(k / 4) * 0.12 }}>
-              <LogoCard id={c.id} />
-            </motion.div>
+      <div className="wrap promise">
+        <motion.span className="promise-rule" aria-hidden="true" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} />
+        <p className="promise-line" aria-label={PROMISE}>
+          {PROMISE.split(' ').map((w, i) => (
+            <motion.span key={i} aria-hidden="true" initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }} whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.14, duration: 0.8 }}>{w}</motion.span>
           ))}
-        </div>
-
-        <div className="mq-wrap">
-          <Marquee items={CLIENTS.slice(0, half)} />
-          <Marquee items={CLIENTS.slice(half)} rev />
-        </div>
-
-        {/* DUMMY testimonials: replace with real client words */}
-        <div className="words">
-          <AnimatePresence mode="wait">
-            <motion.figure key={i} className="word" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -24 }} transition={{ duration: 0.55 }}>
-              <svg viewBox="0 0 40 30" width="34" aria-hidden="true"><path d="M0 30V17C0 7 5 1 15 0v6c-5 1-8 4-8 9h8v15H0zm22 0V17c0-10 5-16 15-17v6c-5 1-8 4-8 9h8v15H22z" fill="#e4ee2b" /></svg>
-              <blockquote>{WORDS[i].q}</blockquote>
-              <figcaption><b>{WORDS[i].who}</b> &middot; {WORDS[i].org}</figcaption>
-            </motion.figure>
-          </AnimatePresence>
-          <div className="word-dots">{WORDS.map((_, k) => <button key={k} className={k === i ? 'on' : ''} onClick={() => setI(k)} aria-label={`Show testimonial ${k + 1}`} />)}</div>
-          <span className="dummy-tag light">Sample testimonials. Real client words coming soon.</span>
-        </div>
+        </p>
+        <p className="promise-by">The Sridhi promise</p>
       </div>
     </section>
   )

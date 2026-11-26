@@ -34,6 +34,7 @@ function PackStage({ sx, sy, reduce, ready }) {
   const rX = useTransform(sy, [-0.5, 0.5], [14, -14])
   return (
     <div className="pack-stage">
+      <div className="beams" aria-hidden="true"><i /><i /></div>
       <div className="pack-glow" aria-hidden="true" />
       <div className="pack-ring r1" aria-hidden="true" /><div className="pack-ring r2" aria-hidden="true" />
       {ORBITS.map((o, i) => (
@@ -44,17 +45,23 @@ function PackStage({ sx, sy, reduce, ready }) {
         </div>
       ))}
       <motion.div className="pack-3d" style={{ rotateX: reduce ? 0 : rX, rotateY: reduce ? 0 : rY }} initial={{ opacity: 0, scale: 0.4, y: 120, rotateZ: -25 }} animate={ready ? { opacity: 1, scale: 1, y: 0, rotateZ: 0 } : {}} transition={{ type: 'spring', stiffness: 70, damping: 11, delay: 0.5 }}>
+        <motion.div className="pack-reveal" initial={reduce ? false : { filter: 'brightness(0) contrast(1.4)' }} animate={ready ? { filter: ['brightness(0) contrast(1.4)', 'brightness(0.18) contrast(1.35)', 'brightness(1) contrast(1)'] } : {}} transition={{ duration: 3.2, times: [0, 0.45, 1], delay: 0.7, ease: 'easeInOut' }}>
         <div className="pack-turn">
           <div className="pack-float">
             <img src="/images/pack-cutout-v6.png" alt="Sridhi 1 kg idli and dosa batter pack, coming soon" className="pack-img" width="624" height="662" fetchPriority="high" />
             <span className="pack-sheen" aria-hidden="true" />
           </div>
         </div>
+        </motion.div>
       </motion.div>
       <div className="pack-shadow" aria-hidden="true" />
-      <motion.div className="kg-tag" initial={{ scale: 0, rotate: -40, opacity: 0 }} animate={ready ? { scale: 1, rotate: -8, opacity: 1 } : {}} transition={{ type: 'spring', stiffness: 140, damping: 11, delay: 2.1 }}><b>1 KG</b><span>Coming soon</span></motion.div>
-      <motion.div className="soon-pill" initial={{ opacity: 0, y: -20 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 1.3, duration: 0.7 }}><i aria-hidden="true" />Launching soon</motion.div>
-      <motion.a className="soon-btn" href={NOTIFY} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 30 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 2.3, duration: 0.7 }} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.97 }}>Be the first to know<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-5l5 5-5 5" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg></motion.a>
+      <motion.div className="soon-pill" initial={{ opacity: 0, y: -20 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 1.3, duration: 0.7 }}><i aria-hidden="true" />Sridhi 1 kg</motion.div>
+      <p className="cine" aria-label="Coming soon">
+        {'COMING SOON'.split('').map((ch, i) => (
+          <motion.span key={i} aria-hidden="true" initial={{ opacity: 0, y: 26, scale: 1.8, filter: 'blur(12px)' }} animate={ready ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' } : {}} transition={{ delay: 2.8 + i * 0.07, duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}>{ch === ' ' ? '\u00a0' : ch}</motion.span>
+        ))}
+      </p>
+      <motion.a className="soon-btn" href={NOTIFY} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 30 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 3.7, duration: 0.7 }} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.97 }}>Be the first to know<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-5l5 5-5 5" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg></motion.a>
       {!reduce && <div className="steam" aria-hidden="true">{[0,1,2,3,4,5].map((i) => <i key={i} style={{ left: `${18 + i * 12}%`, animationDelay: `${i * 0.9}s` }} />)}</div>}
       {!reduce && <div className="grains" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ left: `${6 + ((i * 17) % 88)}%`, animationDelay: `${-(i * 0.7)}s`, animationDuration: `${6 + (i % 5)}s` }} />)}</div>}
       {BADGES.map((b) => (<BadgeChip key={b.text} {...b} sx={sx} reduce={reduce} ready={ready} />))}
@@ -105,6 +112,7 @@ export default function Hero({ ready }) {
         <h1 className="hero-title" aria-label={LINES.join(' ')}>
           {LINES.map((t, i) => (<span className="line" key={t} aria-hidden="true"><motion.span custom={i} variants={lineV} initial="hidden" animate={state}>{t}</motion.span></span>))}
         </h1>
+        <motion.p className="hero-expert" variants={fadeUp(0.55)} initial="hidden" animate={state}>One Craft. Idli Batter. <em>Mastered.</em></motion.p>
         <motion.p className="hero-sub" variants={fadeUp(0.7)} initial="hidden" animate={state}>
           Naturally fermented. Ground the traditional way. Made with RO purified water and not a single preservative. The batter that Chennai’s finest hotels, hospitals and institutions rely on, every single day.
         </motion.p>

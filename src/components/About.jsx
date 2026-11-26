@@ -8,8 +8,9 @@ export default function About() {
   return (
     <section id="about" className="section about">
       <div className="wrap about-grid">
-        <motion.div className="about-media" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.9 }}>
-          <img src="/images/pack-5kg-scene.jpg" alt="Sridhi 5 kg batter pack beside fresh idlis and a golden dosa" loading="lazy" />
+        <motion.div className="about-media" initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 1.1, ease: [0.2, 0.7, 0.2, 1] }}>
+          <img src="/images/who-we-are-5kg.jpg" alt="Sridhi 5 kg batter pack beside fresh idlis and a golden dosa" loading="lazy" />
+          <span className="about-shine" aria-hidden="true" />
           <span className="about-badge"><b>Since</b>2016</span>
         </motion.div>
         <div className="about-copy">
@@ -23,7 +24,7 @@ export default function About() {
           </motion.p>
           <motion.div className="about-actions" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
             <Magnetic><button className="btn btn-green btn-lg" onClick={open}>Partner with Sridhi</button></Magnetic>
-            <span className="dummy-tag">Placeholder text. Final content coming soon.</span>
+            <span className="dummy-tag">Dummy content. Final text coming soon.</span>
           </motion.div>
         </div>
       </div>

@@ -1,6 +1,8 @@
-# Sridhi website v9
+# Sridhi website v10
 
-- Clients: crisp logos cut from the supplied brand image, uniform cards (no more cropping), featured clientele image in a premium frame with tilt + shine, staggered spring reveal grid, two smooth marquee rows.
-- Only the 11 supplied brands are shown. IIT Madras and Sri Krishna Sweets removed. Saravana Bhavan remains excluded.
-- Hero now shows the 1 kg pack in a floating 3D turntable with "Launching soon" pill, "1 KG Coming soon" seal and a glowing "Be the first to know" WhatsApp button.
-- 5 kg professional pack section kept further down the page.
+- Hero: same headline, new line "One Craft. Idli Batter. Mastered.", cinematic 1 kg reveal (shadow to light, spotlight beams, "Coming Soon").
+- Clients moved directly under the hero: "Our Valued Clients, Trusted By", 3D rotating ring of 13 logos (IIT Madras and Sri Krishna Sweets added, Saravana Bhavan excluded).
+- Sample testimonials replaced by the promise "Your reputation is safe with us."
+- 5 kg pack: 3D tilt, float and shine.
+- Who we are: new pack photo. Text is still DUMMY content.
+- Phone number unchanged (+91 89258 64472). To change it, edit src/data.js.

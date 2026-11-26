@@ -32,10 +32,10 @@ export default function App() {
       <main>
         <Hero ready={ready} />
         <TrustStrip />
+        <Clients />
+        <Pack5kg />
         <Stats />
         <About />
-        <Pack5kg />
-        <Clients />
         <Statement />
         <PlateZoom />
         <Features />

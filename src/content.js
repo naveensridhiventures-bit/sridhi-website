@@ -1,7 +1,7 @@
 export const NAV = [
-  { href: '#about', label: 'Who we are' },
-  { href: '#pack', label: '5 kg pack' },
   { href: '#clients', label: 'Our clients' },
+  { href: '#pack', label: '5 kg pack' },
+  { href: '#about', label: 'Who we are' },
   { href: '#process', label: 'Our process' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -58,22 +58,17 @@ export const STATS = [
 
 // Logo crops live in /public/images/clients (Saravana Bhavan intentionally excluded)
 export const CLIENTS = [
+  { id: 'iitm', name: 'IIT Madras' },
   { id: 'taj-connemara', name: 'Taj Connemara' },
   { id: 'taj-coromandel', name: 'Taj Coromandel' },
   { id: 'taj-fishermans', name: "Taj Fisherman's Cove" },
   { id: 'taj-clubhouse', name: 'Taj Club House' },
   { id: 'vivanta', name: 'Vivanta by Taj' },
   { id: 'apollo', name: 'Apollo Hospitals' },
+  { id: 'sks', name: 'Sri Krishna Sweets' },
   { id: 'ramachandra', name: 'Sri Ramachandra Medical Center' },
   { id: 'chettinad', name: 'Chettinad Hospital & Research Institute' },
   { id: 'joot', name: 'JOOT Foods' },
   { id: 'sakthi', name: "Sakthi's Kitchen" },
   { id: 'origin', name: 'Origin Cafe' },
-]
-
-// DUMMY testimonials: replace with real client words
-export const WORDS = [
-  { q: 'Consistent texture and taste in every single delivery. Our kitchen team never has to think twice about the batter.', who: 'Executive Chef', org: 'Premium Hotel, Chennai' },
-  { q: 'On time, every time, and always fresh. Sridhi understands what a high-volume kitchen needs.', who: 'Catering Head', org: 'Institutional Caterer, Chennai' },
-  { q: 'Clean, natural and reliable. Exactly the standard we expect for our patients and guests.', who: 'Food Services Manager', org: 'Leading Hospital, Chennai' },
 ]
